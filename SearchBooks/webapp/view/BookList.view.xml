@@ -1,0 +1,82 @@
+<mvc:View controllerName="org.ubb.books.controller.BookList"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:m="sap.m" height="100%">
+	<m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
+		<m:content>
+			<Table id="table" rows="{/SearchBookEntries}">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:ToolbarSpacer/>
+						<m:Title id="title" text="Search books"/>
+
+						<m:Input id="isbnInput" placeholder="ISBN" />
+						
+						<m:Label text="Author" />
+						<m:Input id="authorInput" />
+
+						<m:Label text="Title" />
+						<m:Input id="titleInput" />
+
+						<m:Label text="Date published" />
+						<m:DatePicker id="dateInput" />
+
+						<m:Label text="Language" />
+						<m:Input id="languageInput" />
+
+						<m:ToolbarSeparator/>
+						<m:Button text="Search" icon="sap-icon://search" press="search"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column >
+						<m:Label text="ISBN" />
+						<template>
+							<m:Text text="{Isbn}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Author" />
+						<template>
+							<m:Text text="{Author}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Title" />
+						<template>
+							<m:Text text="{Title}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Date published" />
+						<template>
+							<m:Text text="{ 
+							path: 'DatePublished',
+							type: 'sap.ui.model.type.Date'
+               			}"/>
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Language" />
+						<template>
+							<m:Text text="{Language}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Books available" />
+						<template>
+							<m:Text text="{NumberAvailableBooks}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Check out" />
+						<template>
+							<m:Button text="Check book out" press="checkOutBook" visible="{= parseInt(${NumberAvailableBooks}) > 0}"></m:Button>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

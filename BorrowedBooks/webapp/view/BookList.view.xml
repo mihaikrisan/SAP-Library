@@ -1,0 +1,76 @@
+<mvc:View controllerName="org.ubb.books.controller.BookList"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:m="sap.m" height="100%">
+	<m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
+		<m:content>
+			<Table id="table" selectionMode="MultiToggle" rows="{/CheckedOutBooks}">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="Books"/>
+						<m:ToolbarSpacer/>
+						<m:Button text="Filters" icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters"/>
+						<m:Button text="Sort" icon="sap-icon://decline" tooltip="Clear sort" press="clearSort"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column filterProperty="FirstName" sortProperty="FirstName">
+						<m:Label text="First name" />
+						<template>
+							<m:Text text="{FirstName}" />
+						</template>
+					</Column>
+					<Column filterProperty="LastName" sortProperty="LastName">
+						<m:Label text="Last name" />
+						<template>
+							<m:Text text="{LastName}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Username" />
+						<template>
+							<m:Text text="{Username}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Date of checkout" />
+						<template>
+							<m:Text text="{ 
+							path: 'DateCheckout',
+							type: 'sap.ui.model.type.Date'
+               			}"/>
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Date of return" />
+						<template>
+							<m:Text text="{ 
+							path: 'DateReturn',
+							type: 'sap.ui.model.type.Date'
+               			}" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="ISBN" />
+						<template>
+							<m:Text text="{Isbn}" />
+						</template>
+					</Column>
+					<Column filterProperty="Title" sortProperty="Title">
+						<m:Label text="Title" />
+						<template>
+							<m:Text text="{Title}" />
+						</template>
+					</Column>
+					<Column filterProperty="Author" sortProperty="Author">
+						<m:Label text="Author" />
+						<template>
+							<m:Text text="{Author}" />
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>
